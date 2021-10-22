@@ -1,0 +1,73 @@
+.homepage {
+  height: 60vh;
+  width: 100vw;
+  background-image: url('https://cafebiz.cafebizcdn.vn/162123310254002176/2020/12/21/njlmkfwe3msy6dthlb2yet-16085409438271125946127.jpg');
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  background-repeat: no-repeat;
+  margin: 100px 0 0 -8px;
+  z-index: -1;
+}
+
+.homepage-form {
+  position: absolute;
+  right: 100px;
+  margin-top: -500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.name-form {
+  font-size: 28px;
+}
+
+.input-form-homepage {
+  outline: none;
+  border: none;
+  font-size: 15px;
+}
+
+.input-form {
+  margin: 15px 0 0 0;
+}
+
+.field-homepage {
+  padding: 15px 5px;
+  border: solid;
+  border-radius: 15px;
+  border: 1px solid rgb(216, 216, 216);
+  margin: 5px 0;
+  display: grid;
+  grid-template-columns: 80px auto;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: rgb(187, 187, 187);
+  margin: 10px 0 0 10px;
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  color: tomato;
+  text-decoration: underline;
+}
+
+.button-form-homepage {
+  margin: 5px 0 0 260px;
+  background-color: tomato;
+  text-align: center;
+  padding: 5px;
+  font-size: 18px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.button-form-homepage:hover {
+  background-color: rgb(207, 44, 15);
+}
