@@ -1,11 +1,16 @@
 import { useState } from "react";
 
 const SignInForm = () => {
-  const [username, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const[noti, setNoti] = useState('');
 
   const signIn = () => {
-    
+    if(username.length === 0 || password.length === 0) {
+      setNoti('You need to type all fields');
+      return;
+    }
+    setNoti('');
   }
 
   return (
@@ -22,7 +27,7 @@ const SignInForm = () => {
             type='text' 
             className='input-form-homepage' 
             value={username} 
-            onChange={e => setUserName(e.target.value)} 
+            onChange={e => setUsername(e.target.value)} 
             placeholder='Username' 
           />
         </div>
@@ -41,6 +46,9 @@ const SignInForm = () => {
       </div>
       <div className='forgot-password'>
         Forgot Password?
+      </div>
+      <div className='noti'>
+        {noti}
       </div>
       <div className='button-form-homepage' onClick={signIn}>
         Sign In
