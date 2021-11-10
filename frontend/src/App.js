@@ -1,5 +1,4 @@
 import Homepage from "./views/homepage";
-import './css/app.css';
 
 function App() {
   return (
