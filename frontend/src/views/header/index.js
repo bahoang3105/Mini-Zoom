@@ -13,8 +13,8 @@ const Header = (props) => {
       <AboutMe />
       <ButtonHostAMeet />
       <ButtonJoinAMeet />
-      <ButtonSignIn selectedForm={props.selectedForm} setSelectedForm={props.setSelectedForm} />
-      <ButtonSignUp selectedForm={props.selectedForm} setSelectedForm={props.setSelectedForm} />
+      <ButtonSignIn />
+      <ButtonSignUp />
     </div>
   );
 }

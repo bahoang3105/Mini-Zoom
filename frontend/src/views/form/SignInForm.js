@@ -1,11 +1,43 @@
+import axios from "axios";
 import { useState } from "react";
+import { API_URL, BASE_URL } from "../../URL";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-
-  const signIn = () => {
-    
+  const [noti, setNoti] = useState('');
+  const navigate = useNavigate();
+  
+  const signIn = async() => {
+    if(username.length ===0 || password.length ===0) {
+      setNoti('You need to type all fields');
+      return;
+    }
+    if(username.length < 8) {
+      setNoti('Invalid username');
+      return;
+    }
+    if(password.length < 8) {
+      setNoti('Invalid password. Password is too short');
+      return;
+    }
+    setNoti('');
+    try {
+      const checkLogin = await axios.get(API_URL + '/user/login', {
+        params: {
+          username,
+          password,
+        }
+      });
+      if(checkLogin.data) {
+        localStorage.setItem('userID', checkLogin.data.userID);
+        navigate(BASE_URL);
+      }
+    } catch (err) {
+      setNoti(err.response.data.message);
+      console.error(err.response.data.message);
+    }
   }
 
   return (
@@ -39,6 +71,9 @@ const SignInForm = () => {
           />
         </div>
       </div>
+      <div className='noti'>
+        {noti}
+      </div>
       <div className='forgot-password'>
         Forgot Password?
       </div>
@@ -49,4 +84,4 @@ const SignInForm = () => {
   );
 }
 
-export default SignInForm;
+export default SignInForm; 

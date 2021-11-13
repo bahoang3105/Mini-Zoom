@@ -57,7 +57,7 @@
 }
 
 .button-form-homepage {
-  margin: 5px 0 0 260px;
+  margin: 15px 0 0 260px;
   background-color: tomato;
   text-align: center;
   padding: 5px;
@@ -70,4 +70,24 @@
 
 .button-form-homepage:hover {
   background-color: rgb(207, 44, 15);
+}
+
+.field-name {
+  display: grid;
+  grid-template-columns: 80px 80px;
+  border-radius: 15px;
+  border: 1px solid rgb(216, 216, 216);
+  padding: 15px 5px;
+}
+
+.fields-name {
+  display:  grid;
+  grid-template-columns: 195px 195px;
+  column-gap: 8px;
+} 
+
+.noti {
+  color: red;
+  font-size: 14px;
+  margin-top: 15px;
 }
