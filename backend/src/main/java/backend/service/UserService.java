@@ -37,4 +37,12 @@ public class UserService {
   public Optional<User> findUserLogin(String username, String password) {
     return userRepository.findUser(username, password);
   }
+
+  public boolean checkUser(String userId) {
+    Optional<User> userById = userRepository.checkUser(userId);
+    if(userById.isPresent()) {
+      return true; 
+    }
+    return false;
+  }
 }

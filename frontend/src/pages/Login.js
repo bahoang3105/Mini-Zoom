@@ -1,11 +1,11 @@
-import Header from "../views/header";
+import Header from "../component/header";
 import '../css/register.css';
-import SignInForm from "../views/form/SignInForm";
+import SignInForm from "../component/form/SignInForm";
 
 const Login = () => {
   const renderForm = () => {
     return (
-      <SignInForm setSelectedForm='signIn' />
+      <SignInForm />
     );
   }
 

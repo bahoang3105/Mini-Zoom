@@ -1,0 +1,41 @@
+.footer-control {
+  position: fixed;
+  width: 100vw;
+  height: 60px;
+  bottom: 0;
+  margin-left: -8px;
+  background-color: rgb(41, 41, 41);
+  display: flex;
+  font-size: 40px;
+  color: white;
+}
+
+.room {
+  background-color: black;
+}
+
+.element-bottom {
+  padding: 10px 20px 0 20px;
+  cursor: pointer;
+}
+
+.element-bottom:hover {
+  background-color: rgb(71, 71, 71);
+}
+
+.end-icon {
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  padding: 5px 15px;
+  border-radius: 8px;
+  margin-top: 3px;
+}
+
+#end-room {
+  padding: 10px 20px 0 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+

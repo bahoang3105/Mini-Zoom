@@ -30,3 +30,8 @@
 .selected-form:hover {
   background-color: rgb(255, 184, 51) !important;
 }
+
+.header-selection {
+  display: flex;
+  margin-left: 60%;
+}

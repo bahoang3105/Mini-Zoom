@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { API_URL, BASE_URL } from "../../URL";
+import { API_URL } from "../../URL";
 import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
@@ -31,8 +31,8 @@ const SignInForm = () => {
         }
       });
       if(checkLogin.data) {
-        localStorage.setItem('userID', checkLogin.data.userID);
-        navigate(BASE_URL);
+        localStorage.setItem('userId', checkLogin.data.userId);
+        navigate('/', { replace: true });
       }
     } catch (err) {
       setNoti(err.response.data.message);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import { API_URL } from "../../URL";
+import { useNavigate } from "react-router";
 
 const SignUpForm = (props) => {
   const [username, setUsername] = useState('');
@@ -9,6 +10,7 @@ const SignUpForm = (props) => {
   const [lastname, setLastname] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [noti, setNoti] = useState('');
+  const navigate = useNavigate();
 
   const signUp = async () => {
     if(username.length === 0 || password.length === 0 || repeatPassword.length === 0 || firstname.length === 0 || lastname.length === 0) {
@@ -36,7 +38,7 @@ const SignUpForm = (props) => {
       });
       if(newUser.data.success) {
         alert("Create successfully!");
-        props.setSelectedForm('signIn');
+        navigate('/login', { replace: true });
       }
     } catch (err) {
       console.error(err);

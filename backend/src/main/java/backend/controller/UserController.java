@@ -49,7 +49,7 @@ public class UserController {
     Optional<User> checkUser = userService.findUserLogin(username, password);
     HashMap<String, String> res = new HashMap<>();
     if(checkUser.isPresent()) {
-      res.put("userID", String.valueOf(checkUser.get().getId()));
+      res.put("userId", String.valueOf(checkUser.get().getUserId()));
       return res;
     }
     throw new ResponseStatusException(

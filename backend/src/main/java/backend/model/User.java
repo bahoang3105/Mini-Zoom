@@ -15,7 +15,7 @@ public class User {
     name = "user_uuid",
     strategy = "uuid"
   )
-  private String id;
+  private String userId;
   private String name;
   private String username;
   private String password;
@@ -23,8 +23,8 @@ public class User {
   public User() {
   }
 
-  public User(String id, String name, String username, String password) {
-    this.id = id;
+  public User(String userId, String name, String username, String password) {
+    this.userId = userId;
     this.name = name;
     this.username = username;
     this.password = password;
@@ -36,8 +36,12 @@ public class User {
     this.password = password;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public User(String userId) {
+    this.userId = userId;
+  }
+
+  public void setId(String userId) {
+    this.userId = userId;
   }
 
   public void setName(String name) {
@@ -52,8 +56,8 @@ public class User {
     this.password = password;
   }
 
-  public String getId() {
-    return this.id;
+  public String getUserId() {
+    return this.userId;
   }
 
   public String getName() {
@@ -71,7 +75,7 @@ public class User {
   @Override
   public String toString() {
     return "User{" + 
-           "id=" + id +
+           "userId=" + userId +
            ", name=" + name + 
            ", username=" + username +
            "}";
