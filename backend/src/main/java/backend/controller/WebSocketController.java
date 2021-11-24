@@ -13,15 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class WebSocketController {
-  
-  @Autowired
-  private UserService userService;
 
-  @MessageMapping("/{roomId}")
-  @SendTo("/app/room/{roomId}")
-  public Map<String, String> handlerMessage(@Payload Map<String, String> message) {
+  @MessageMapping("/all")
+  @SendTo("/topic/all")
+  public Map<String, String> post(@Payload Map<String, String> message) {
+    System.out.println("asss");
     Map<String, String> response = new HashMap<>();
-    
+    response.put("hiha", "hahi");
     return response;
   }
 }
