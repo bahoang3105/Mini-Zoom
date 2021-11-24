@@ -15,6 +15,8 @@ const Room = () => {
       console.log('open');
       sock.send('test');
   };
+  
+  console.log(window);
  
   sock.onmessage = function(e) {
       console.log('message', e.data);
