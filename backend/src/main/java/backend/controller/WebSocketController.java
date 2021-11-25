@@ -16,7 +16,7 @@ public class WebSocketController {
 
   @MessageMapping("/all")
   @SendTo("/topic/all")
-  public Map<String, String> post(@Payload Map<String, String> message) {
+  public Map<String, String> post(@Payload String message) {
     System.out.println("asss");
     Map<String, String> response = new HashMap<>();
     response.put("hiha", "hahi");

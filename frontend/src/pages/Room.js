@@ -1,8 +1,7 @@
 import RoomComponent from '../component/room';
 // import SockJsClient from 'react-stomp';
 import { SOCKET_URL } from '../URL';
-import { useRef } from 'react';
-import SockJS from 'sockjs-client';
+import { useEffect, useRef } from 'react';
 
 const Room = () => {
   const location = window.location.pathname.split('/');
@@ -10,26 +9,28 @@ const Room = () => {
   const clientRef = useRef();
   const userId = localStorage.getItem('userId');
 
-  var sock = new SockJS(SOCKET_URL);
-  sock.onopen = function() {
-      console.log('open');
-      sock.send('test');
-  };
+  var stompClient = null;
+
+  const connect = () => {
+    var sock = new window.SockJS(SOCKET_URL);
+    stompClient = window.Stomp.over(sock);
+    stompClient.connect({}, (frame) => {
+      console.log(frame);
+      stompClient.subscribe('/topic/' + roomId, (mess) => {
+        console.log(mess);
+      })
+    })
+  }
   
-  console.log(window);
- 
-  sock.onmessage = function(e) {
-      console.log('message', e.data);
-      sock.close();
-  };
- 
-  sock.onclose = function() {
-      console.log('close');
-  };
+  useEffect(() => {
+    connect();
+  }, []);
 
   const onClick = () => {
-    sock.send('test');
+    stompClient.send('/app/' + roomId, {}, 'dasdas');
   }
+  
+  console.log(window);
 
   // const sendMessage = (msg) => {
   //   try {
@@ -72,7 +73,7 @@ const Room = () => {
         debug={false}
       /> */}
       <RoomComponent roomId={roomId} />
-      <div onClick={onClick}>dsadsad</div>
+      <div onClick={onClick}>dasdasd</div>
     </>
   );
 }
