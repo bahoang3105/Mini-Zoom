@@ -18,7 +18,7 @@ const Participant = (props) => {
       <div className="title-bar" onClick={closeBar}>
         Participants
       </div>
-      <div className='content-bar'>
+      <div className='content-bar participant-bar-content'>
         {renderListParticipant()}
       </div>
     </div>
