@@ -1,13 +1,15 @@
 import RoomComponent from '../component/room';
-// import SockJsClient from 'react-stomp';
 import { SOCKET_URL } from '../URL';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const Room = () => {
   const location = window.location.pathname.split('/');
   const roomId = location[location.length-1];
-  const clientRef = useRef();
+  const [displayChat, setDisplayChat] = useState(true);
+  const [displayParticipant, setDisplayParticipant] = useState(false);
   const userId = localStorage.getItem('userId');
+  const [listMsg, setListMsg] = useState([{name: "hoang", id: '1', content: "hihii", time: "19h"}, {name: "hieu", id: '2', content: "dsdsd", time: "20h"}, {name: "admin", id: 0, content: {name: "hichic", id: '1', type: "join"}, time: "21h"}]);
+  const [unReadMsg, setUnReadMsg] = useState(0);
 
   var stompClient = null;
 
@@ -15,65 +17,32 @@ const Room = () => {
     var sock = new window.SockJS(SOCKET_URL);
     stompClient = window.Stomp.over(sock);
     stompClient.connect({}, (frame) => {
-      console.log(frame);
       stompClient.subscribe('/topic/' + roomId, (mess) => {
-        console.log(mess);
-      })
+        setListMsg([...listMsg, JSON.parse(mess.body)]);
+      });
     })
   }
   
   useEffect(() => {
     connect();
-  }, []);
+  });
 
   const onClick = () => {
-    stompClient.send('/app/' + roomId, {}, 'dasdas');
+    stompClient.send('/app/' + roomId, {}, JSON.stringify({ id: "333", name: 'hoang', content: 'hihi' }));
   }
-  
-  console.log(window);
-
-  // const sendMessage = (msg) => {
-  //   try {
-  //     clientRef.current.sendMessage('room/all', JSON.stringify(msg));
-  //     return true;
-  //   } catch(err) {
-  //     return false;
-  //   }
-  // }
-
-  // const onClick = () => {
-  //   sendMessage({ a: 'hihi'})
-  // }
-
-  // const onConnect = () => {
-  //   sendMessage({
-  //     userId,
-  //     message: 'join'
-  //   }); 
-  //   console.log('join');
-  // }
-
-  // const onMessage = (message, topic) => {
-  //   console.log(message, topic);
-  // }
-
-  // const onDisconnect = () => {
-  //   console.log('disconnected');
-  // }
 
   return (
     <>
-      {/* <SockJsClient 
-        url={ SOCKET_URL }
-        topics={['/topic/all']}
-        onMessage={onMessage}
-        ref={clientRef}
-        onConnect={onConnect}
-        onDisconnect={onDisconnect}
-        debug={false}
-      /> */}
-      <RoomComponent roomId={roomId} />
-      <div onClick={onClick}>dasdasd</div>
+      <RoomComponent 
+        roomId={roomId} 
+        displayChat={displayChat}
+        setDisplayChat={setDisplayChat}
+        displayParticipant={displayParticipant}
+        setDisplayParticipant={setDisplayParticipant}
+        listMsg={listMsg}
+        unReadMsg={unReadMsg}
+      />
+      <div onClick={onClick} style={{ backgroundColor: "white", position: "fixed"}}>adsdasd</div>
     </>
   );
 }

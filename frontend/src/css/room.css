@@ -12,6 +12,7 @@
 
 .room {
   background-color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .element-bottom {
@@ -39,3 +40,93 @@
   right: 0;
 }
 
+.transition {
+  transition: 0.5s;
+}
+
+.room-bar {
+  position: fixed;
+  overflow:hidden;
+  height: calc(100vh - 60px);
+  background-color: rgb(255, 255, 255);
+  top: 0;
+  right: 0;
+}
+
+.display-bar {
+  width: 330px;
+}
+
+.hidden-bar {
+  width: 0;
+}
+
+.main-room {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(70, 70, 70);
+  height: calc(100vh - 60px);
+}
+
+.mini-main {
+  width: calc(100vw - 330px);
+}
+
+.full-main {
+  width: 100vw;
+}
+
+.title-bar {
+  text-align: center;
+  padding: 15px 0;
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid rgb(199, 199, 199);
+  box-shadow: 0 2px rgb(218, 218, 218);
+}
+
+.admin-chat {
+  text-align: center;
+  color: rgb(105, 105, 105);
+  font-size: 14px;
+  margin: 10px 5px;
+}
+
+.chat-bar-content {
+  word-wrap: break-word;
+}
+
+.chat-box {
+  border-radius: 18px;
+  min-width: 20px;
+}
+
+.my-chat {
+  margin: 5px;
+}
+
+.other-chat {
+  margin: 5px;
+}
+
+.my-chat-box {
+  background-color: #2063ff;
+  width: fit-content;
+  color: white;
+  padding: 7px 14px;
+}
+
+.chat-title {
+  font-size: 14px;
+  color: #797979;
+  margin-left: 10px;
+}
+
+.others-chat-box {
+  background-color: #d8d8d8;
+  color: black;
+  width: fit-content;
+  padding: 7px 14px;
+}

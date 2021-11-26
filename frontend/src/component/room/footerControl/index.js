@@ -9,7 +9,7 @@ import getUserMedia from './getUserMedia';
 import getDisplayMedia from '../getDisplayMedia';
 import { useNavigate } from "react-router";
 
-const FooterControl = () => {
+const FooterControl = (props) => {
   const navigate = useNavigate();
   const [micro, setMicro] = useState(false);
   const [camera, setCamera] = useState(false);
@@ -33,11 +33,13 @@ const FooterControl = () => {
   }
 
   const onClickChat = () => {
-
+    props.setDisplayParticipant(false);
+    props.setDisplayChat(!props.displayChat);
   }
 
   const onClickParticipant = () => {
-    
+    props.setDisplayParticipant(!props.displayParticipant);
+    props.setDisplayChat(false);
   }
 
   const onClickShareScreen = async () => {
@@ -51,19 +53,19 @@ const FooterControl = () => {
 
   return (
     <div className='footer-control'>
-      <div className='element-bottom' onClick={onClickMicro}>
+      <div className='element-bottom' onClick={onClickMicro} title='Micro'>
         <Micro micro={micro} setMicro={setMicro} />
       </div>
-      <div className='element-bottom' onClick={onClickCamera}>
+      <div className='element-bottom' onClick={onClickCamera} title='Camera'>
         <Camera camera={camera} setCamera={setCamera} />
       </div>
-      <div className='element-bottom' style={{ marginLeft: '35%' }} onClick={onClickShareScreen}>
+      <div className='element-bottom' style={{ marginLeft: '35%' }} onClick={onClickShareScreen} title='Share Screen'>
         <ShareScreen />
       </div>
-      <div className='element-bottom' onClick={onClickChat}>
+      <div className='element-bottom' onClick={onClickChat} title='Chat'>
         <Chat />
       </div>
-      <div className='element-bottom' onClick={onClickParticipant}>
+      <div className='element-bottom' onClick={onClickParticipant} title='Participant'>
         <Participant />
       </div>
       <div id='end-room' onClick={onClickEnd}>
