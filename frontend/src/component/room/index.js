@@ -15,8 +15,13 @@ const Room = (props) => {
   return (
     <div className='room'>
       <Main  display={displayMain} />
-      <Chat display={props.displayChat} setDisplay={props.setDisplayChat} listMsg={props.listMsg} />
-      <Participant display={props.displayParticipant} setDisplay={props.setDisplayParticipant} />
+      <Chat 
+        display={props.displayChat} 
+        setDisplay={props.setDisplayChat} 
+        listMsg={props.listMsg} 
+        sendMessage={props.sendMessage}
+      />
+      <Participant display={props.displayParticipant} setDisplay={props.setDisplayParticipant} listParticipant={props.listParticipant} />
       <FooterControl 
         displayChat={props.displayChat}
         setDisplayChat={props.setDisplayChat} 

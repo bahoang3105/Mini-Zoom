@@ -1,6 +1,8 @@
 import AdminChat from "./AdminChat";
+import InputChat from "./InputChat";
 import MyChat from "./MyChat";
 import OthersChat from "./OthersChat";
+import { AiOutlineDoubleRight } from 'react-icons/ai';
 
 const Chat = (props) => {  
   const renderListMsg = () => {
@@ -9,13 +11,25 @@ const Chat = (props) => {
       : (msg.id === userId ? <MyChat key={index} data={msg} /> : <OthersChat key={index} data={msg} />));
   }
 
+  const closeBar = () => {
+    props.setDisplay(false);
+  }
+
   return (
     <div className={`room-bar transition${props.display ? ' display-bar' : ' hidden-bar'}`}>
+      <div className='close-bar' onClick={closeBar}>
+        <AiOutlineDoubleRight />
+      </div> 
       <div className="title-bar">
         Group Chat
       </div>
       <div className='content-bar chat-bar-content'>
-        {renderListMsg()}
+        <div className='list-mess'>
+          {renderListMsg()}
+        </div>
+        <div className='input-chat'>
+          <InputChat sendMessage={props.sendMessage} />
+        </div>
       </div>
     </div>
   );

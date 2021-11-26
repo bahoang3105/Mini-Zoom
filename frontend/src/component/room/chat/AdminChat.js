@@ -1,6 +1,7 @@
 const AdminChat = ({ data }) => {
   const userId = localStorage.getItem('userId');
   const { content } = data;
+  console.log('hihi');
   return (
     <div className='admin-chat' title={data.time}>
       {content.id === userId ? 

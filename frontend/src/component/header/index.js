@@ -7,7 +7,7 @@ import ButtonSignUp from './ButtonSignUp';
 import Logo from './Logo';
 
 const Header = (props) => {
-  const isLogin = localStorage.getItem('userId');
+  const isLogin = localStorage.getItem('userId') && localStorage.getItem('name');
   if(!isLogin) {
     return (
     <div className='header'>
