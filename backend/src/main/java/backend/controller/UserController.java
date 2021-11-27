@@ -49,7 +49,8 @@ public class UserController {
     Optional<User> checkUser = userService.findUserLogin(username, password);
     HashMap<String, String> res = new HashMap<>();
     if(checkUser.isPresent()) {
-      res.put("userId", String.valueOf(checkUser.get().getUserId()));
+      res.put("userId", checkUser.get().getUserId());
+      res.put("name", checkUser.get().getName());
       return res;
     }
     throw new ResponseStatusException(

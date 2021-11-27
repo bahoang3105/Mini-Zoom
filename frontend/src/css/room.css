@@ -67,6 +67,7 @@
   left: 0;
   background-color: rgb(70, 70, 70);
   height: calc(100vh - 60px);
+  display: flex;
 }
 
 .mini-main {
@@ -119,6 +120,7 @@
 
 .my-chat {
   margin: 5px;
+  position: relative;
 }
 
 .other-chat {
@@ -128,12 +130,11 @@
 .my-chat-box {
   background-color: #2063ff;
   color: white;
-  padding: 7px 14px;
   position: absolute;
   right: 0;
   border-top-right-radius: 5px;
   margin: 0 5px 0 15px;
-  padding: 5px 15px 5px 5px;
+  padding: 5px 15px 5px 15px;
   text-align: right;
 }
 
@@ -210,4 +211,15 @@
 .participant-name {
   margin: 10px 0 0 0;
   font-size: 18px;
+}
+
+.main-video {
+  height: 100%;
+  width: 50%;
+}
+
+#host {
+}
+
+#guest {
 }

@@ -7,7 +7,7 @@ import { AiOutlineDoubleRight } from 'react-icons/ai';
 const Chat = (props) => {  
   const renderListMsg = () => {
     const userId = localStorage.getItem('userId');
-    return props.listMsg.map((msg, index) => (msg.id === 0 && msg.name === 'admin') ? <AdminChat key={index} data={msg} /> 
+    return props.listMsg.map((msg, index) => (msg.id === '0' && msg.name === 'admin') ? <AdminChat key={index} data={msg} /> 
       : (msg.id === userId ? <MyChat key={index} data={msg} /> : <OthersChat key={index} data={msg} />));
   }
 

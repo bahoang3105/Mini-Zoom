@@ -12,7 +12,7 @@ const getDisplayMedia = async () => {
     };
     return await navigator.mediaDevices.getDisplayMedia(constraints);
   } catch (err) {
-    console.log(err);
+    console.error("You need to allow sharing screen");
   }
 };
 

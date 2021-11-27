@@ -4,7 +4,7 @@ import {
 } from 'react-icons/bs';
 
 const Camera = (props) => {
-  if(props.micro) {
+  if(props.camera) {
     return (
       <BsFillCameraVideoFill />
     )

@@ -32,6 +32,7 @@ const SignInForm = () => {
       });
       if(checkLogin.data) {
         localStorage.setItem('userId', checkLogin.data.userId);
+        localStorage.setItem('name', checkLogin.data.name);
         navigate('/', { replace: true });
       }
     } catch (err) {
