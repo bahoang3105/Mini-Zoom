@@ -29,4 +29,8 @@ public class RoomService {
     roomRepository.save(room);
     return id.toString();
   }
+
+  public Optional<Room> updateParticipants(String participants, String roomId) {
+    return roomRepository.updateParticipants(participants, roomId);
+  }
 }

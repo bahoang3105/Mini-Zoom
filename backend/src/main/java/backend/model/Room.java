@@ -17,6 +17,7 @@ public class Room {
   )
   private String id;
   private String hostId;
+  private String participants;
 
   public Room() {
   }
@@ -34,12 +35,21 @@ public class Room {
     this.hostId = hostId;
   }
 
+  public void setParticipants(String participant) {
+    if(participants == "") participants = participant;
+    else this.participants = participants + "," + participant;
+  }
+
   public String getId() {
     return this.id;
   }
 
   public String getHostId() {
     return this.hostId;
+  }
+
+  public String getParticipants() {
+    return this.getParticipants();
   }
 
   @Override

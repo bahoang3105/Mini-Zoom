@@ -1,11 +1,12 @@
 package backend.controller;
 
-import backend.service.UserService;
+import backend.service.RoomService;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -15,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebSocketController {
 
   @Autowired
-  private UserService userService;
+  private RoomService roomService;
 
   @MessageMapping("/{roomId}")
   @SendTo("/topic/{roomId}")
-  public Map<String, String> handleMessage(@Payload Map<String, String> message) {
+  public Map<String, String> handleMessage(@Payload Map<String, String> message, @DestinationVariable String roomId) {
     HashMap<String, String> response = new HashMap<>();
     response.put("time", Long.toString(System.currentTimeMillis()));
     switch (message.get("type")) {
@@ -32,7 +33,8 @@ public class WebSocketController {
       case "join": {
         response.put("id", "0");
         response.put("name", "admin");
-        response.put("content", "{ \"id\": \"" + message.get("id") + "\", \"name\": \"" + message.get("name") + "\", \"type\": \"" + message.get("type") + "\" }");
+        response.put("content", "{ \"id\": \"" + message.get("id") + "\", \"name\": \"" + message.get("name") + "\", \"type\": \"" + message.get("type") + "\", \"peerId\": \"" + message.get("content") + "\" }");
+        roomService.updateParticipants("{ \"id\": \"" + message.get("id") + "\", \"name\": \"" + message.get("name") + "\", \"type\": \"" + message.get("type") + "\", \"peerId\": \"" + message.get("content") + "\" }", roomId);
         return response;
       }
       case "leave": {

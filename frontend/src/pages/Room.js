@@ -24,7 +24,7 @@ const Room = () => {
   const userId = localStorage.getItem('userId');
   const name = localStorage.getItem('name') || 'HoangNguyen';
   const [listMsg, setListMsg] = useState([]);
-  const [listParticipant, setListPartcipant] = useState([{name: 'Hoang Nguyen', id: '2'}, {name: 'Nguyen Yen', id: '44'}]);
+  const [listParticipant, setListPartcipant] = useState([]);
   const [unReadMsg, setUnReadMsg] = useState(0);
   const [micro, setMicro] = useState(false);
   const [camera, setCamera] = useState(false);
@@ -32,13 +32,12 @@ const Room = () => {
   const hostVideoRef = useRef();
   const guestVideoRef = useRef();
   const guestAudioRef = useRef();
-  const hihi = useRef();
 
   const sock = new window.SockJS(SOCKET_URL);
   const stompClient = window.Stomp.over(sock);
 
   const connect = () => {
-    stompClient.connect({}, (frame) => {
+    stompClient.connect({}, () => {
       stompClient.subscribe('/topic/' + roomId, (message) => handleMessage(JSON.parse(message.body)));
     });
   }
@@ -52,7 +51,7 @@ const Room = () => {
     if(message.id === '0' && message.name === 'admin') {
       const content = JSON.parse(message.content);
       if(content.type === 'join') {
-        setListPartcipant(prevList => [...prevList, {name: content.name, id: content.id}]);
+        setListPartcipant(prevList => [...prevList, {name: content.name, id: content.id, peerId: content.peerId}]);
       }
       if(content.type === 'leave') {
         const place = listParticipant.findIndex(participant => participant.id === content.id);
@@ -63,6 +62,48 @@ const Room = () => {
       }
     }
   }
+
+  const [peerId, setPeerId] = useState();
+  const [peer] = useState(() =>
+    new Peer({
+      config: {
+        iceServers: [
+          { urls: [ "stun:hk-turn1.xirsys.com" ] },
+          { 
+            username: "ClmL5p96khHczNgr_ywdWfq_VlIuyMIqleZCjYznVGg0EXUj16fcSXf1Ek9hoM_0AAAAAGGjGJxob2FuZzMxMDU=", 
+            credential: "122b3e5a-500f-11ec-99d8-0242ac120004", 
+            urls: [ 
+              "turn:hk-turn1.xirsys.com:80?transport=udp", 
+              "turn:hk-turn1.xirsys.com:3478?transport=udp", 
+              "turn:hk-turn1.xirsys.com:80?transport=tcp", 
+              "turn:hk-turn1.xirsys.com:3478?transport=tcp", 
+              "turns:hk-turn1.xirsys.com:443?transport=tcp", 
+              "turns:hk-turn1.xirsys.com:5349?transport=tcp"   
+            ],
+          },
+        ],
+      },
+    })
+  );
+  
+  useEffect(() => {
+    // Peer connect
+    peer?.on("open", (peerId) => {
+      setPeerId(peerId);
+
+      // send message join room to socket
+      sendMessage('join', peerId);
+
+      // Answer
+      peer.on("call", (call) => {
+        console.error(2);
+        call.answer();
+        call?.on("stream", remoteStream => {
+          guestVideoRef.current.srcObject = remoteStream;
+        })
+      });
+    });
+  }, [peer]);
 
   const onClickMicro = async () => {
     if(micro) {
@@ -77,6 +118,13 @@ const Room = () => {
     if(!camera) {
       const srcCamera = await getUserMedia("camera");
       hostVideoRef.current.srcObject = srcCamera;
+      listParticipant.forEach((participant) => {
+        if(participant.id !== userId) {
+          console.log(participant.peerId)
+          const call = peer.call(participant.peerId, srcCamera);
+          console.error(1);
+        }
+      });
     } else {
 
     }
@@ -105,14 +153,6 @@ const Room = () => {
 
   useEffect(() => {
     connect();
-    const subscribe = setInterval(() => {
-      try {
-        sendMessage('join');
-        clearInterval(subscribe);
-      } catch (err) {
-        console.log(err);
-      }
-    }, 500);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
