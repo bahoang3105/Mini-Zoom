@@ -9,6 +9,7 @@ const ButtonHostAMeet = () => {
     const room = await axios.post(API_URL + '/room/create', {
       userId,
     });
+    console.log(room);
     navigate('/room/' + room.data.roomId, { replace: true });
   }
 

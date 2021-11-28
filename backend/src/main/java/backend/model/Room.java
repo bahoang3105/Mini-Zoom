@@ -1,20 +1,13 @@
 package backend.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
 public class Room {
-  @Id @GeneratedValue(generator = "room_uuid")
-  @GenericGenerator(
-    name = "room_uuid",
-    strategy = "uuid"
-  )
+  @Id
   private String id;
   private String hostId;
   private String participants;
@@ -25,6 +18,11 @@ public class Room {
   public Room(String id, String hostId) {
     this.id = id;
     this.hostId = hostId;
+    this.participants = "";
+  }
+
+  public Room(String id) {
+    this.id = id;
   }
 
   public void setId(String id) {
@@ -49,7 +47,7 @@ public class Room {
   }
 
   public String getParticipants() {
-    return this.getParticipants();
+    return this.participants;
   }
 
   @Override

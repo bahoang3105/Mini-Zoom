@@ -1,10 +1,11 @@
 import RoomComponent from '../component/room';
-import { SOCKET_URL } from '../URL';
+import { API_URL, SOCKET_URL } from '../URL';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import getUserMedia from '../component/room/getUserMedia';
 import getDisplayMedia from '../component/room/getDisplayMedia';
 import Peer from 'peerjs';
+import axios from 'axios';
 
 const Room = () => {
 
@@ -25,6 +26,7 @@ const Room = () => {
   const name = localStorage.getItem('name') || 'HoangNguyen';
   const [listMsg, setListMsg] = useState([]);
   const [listParticipant, setListPartcipant] = useState([]);
+  const [test, setTest] = useState();
   const [unReadMsg, setUnReadMsg] = useState(0);
   const [micro, setMicro] = useState(false);
   const [camera, setCamera] = useState(false);
@@ -35,6 +37,19 @@ const Room = () => {
 
   const sock = new window.SockJS(SOCKET_URL);
   const stompClient = window.Stomp.over(sock);
+
+  useEffect(() => {
+    getParticipants();
+  }, []);
+  
+  console.log(test)
+
+  const getParticipants = async () => {
+    const participants = await axios.post(API_URL + "/room/participant", {
+      id: roomId,
+    });
+    setTest(participants);
+  }
 
   const connect = () => {
     stompClient.connect({}, () => {

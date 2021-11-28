@@ -47,6 +47,13 @@ public class RoomController {
     HashMap<String, String> res = new HashMap<>();
     res.put("success", "true");
     res.put("roomId", roomId);
+    System.out.println(roomId);
     return res;
+  }
+
+  @PostMapping("/participant")
+  public String getParticipants(@RequestBody Room room) {
+    String participants = roomService.getParticipants(room.getId());
+    return participants;
   }
 }
