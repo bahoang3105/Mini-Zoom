@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  border-bottom: solid 1px rgb(224, 224, 224);
+  box-shadow: 1px 1px rgb(241, 241, 241);
+  width: 100vw;
+  margin: -8px 0 0 -8px;
+  height: 70px;
+  background-color: #2980b9;
+  color: white;
+}
+
+.header-logo {
+  margin: 20px 0 0 10vw;
+  height: 70px;
+  width: 180px;
+  font-size: 25px;
+  color: white;
+}
+
+.buttons-header {
+  padding: 28px 10px 0 10px;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  background-color: #2980b9;
+}
+
+.buttons-header:hover {
+  background-color: white;
+  color: black;
+}
+
+.selected-form {
+  background-color: white;
+  color: black;
+}
+
+.header-selection {
+  display: flex;
+  margin-left: calc(70vw - 300px);
+}

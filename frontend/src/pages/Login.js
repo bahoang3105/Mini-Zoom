@@ -1,6 +1,6 @@
 import Header from "../component/header";
-import '../css/register.css';
-import SignInForm from "../component/form/SignInForm";
+import './register.css';
+import LogInForm from "../component/form/LogInForm";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
@@ -17,14 +17,13 @@ const Login = () => {
 
   const renderForm = () => {
     return (
-      <SignInForm />
+      <LogInForm />
     );
   }
 
   return (
     <>
-      <Header selectedForm='signIn' />
-      <div className='homepage' />
+      <Header selectedForm='logIn' />
       {renderForm()}
     </>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './app.css';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -8,22 +9,14 @@ const loading = (
 );
 
 // Pages
-const Register = React.lazy(() => import('./pages/Register'));
-const Login = React.lazy(() => import('./pages/Login'));
-const About = React.lazy(() => import('./pages/About'));
-const Homepage = React.lazy(() => import('./pages/Homepage'));
-const Room = React.lazy(() => import('./pages/Room'));
+const Meet = React.lazy(() => import('./ChatVoiceMain/room'));
 function App() {
   return (
     <BrowserRouter>
       <React.Suspense fallback={loading}>
-        <Routes>
-          <Route exact path='/register' name='Register Page' element={<Register />} />
-          <Route exact path='/about' name='About Page' element={<About />} />
-          <Route exact path='/login' name='Login Page' element={<Login />} />
-          <Route exact path='/' name='Home Page' element={<Homepage />} />
-          <Route exact path='/room/:id' name='Room Page' element={<Room />} />
-        </Routes>
+        <Switch>
+          <Route exact path='/' name='Home Page' component={Meet} />
+        </Switch>
       </React.Suspense>
     </BrowserRouter>
   );

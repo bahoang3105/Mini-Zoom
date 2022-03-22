@@ -1,0 +1,66 @@
+.homepage {
+  padding-left: 10vw;
+  padding-right: 10vw;
+  color: rgb(70, 70, 70);
+}
+
+.header-homepage {
+  margin-top: 30px;
+  font-size: 40px;
+}
+
+.homepage-bar {
+  display: flex;
+  margin-top: 20px;
+  color: rgb(73, 131, 218);
+  margin-bottom: 45px;
+}
+
+.card-bar {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.card-bar:hover {
+  text-decoration: underline;
+  color: rgb(59, 105, 175);
+}
+
+.category {
+  margin-top: 25px;
+}
+
+.name-category {
+  font-size: 27px;
+  padding: 3px 0 3px 15px;
+  border-left: 4px solid rgb(73, 131, 218);
+  margin-left: -20px;
+}
+
+.decks {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 10px;
+}
+
+.deck-name {
+  font-size: 21px;
+  color: rgb(87, 87, 87);
+  margin-bottom: 8px;
+}
+
+.deck-info {
+  color: rgb(105, 105, 105);
+  margin-bottom: 8px;
+}
+
+.deck-link {
+  color: rgb(73, 131, 218);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.deck-link:hover {
+  color: rgb(57, 102, 168);
+  text-decoration: underline;
+}

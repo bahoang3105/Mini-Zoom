@@ -1,5 +1,5 @@
 import Header from "../component/header";
-import '../css/register.css';
+import './register.css';
 import SignUpForm from "../component/form/SignUpForm";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
@@ -24,7 +24,6 @@ const Register = () => {
   return (
     <>
       <Header selectedForm='signUp' />
-      <div className='homepage' />
       {renderForm()}
     </>
   );

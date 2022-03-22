@@ -11,7 +11,7 @@ const ButtonSignIn = (props) => {
 
   return (
     <div className={`buttons-header${style}`} onClick={redirectToLogin}>
-      Sign In
+      Log in
     </div>
   );
 }

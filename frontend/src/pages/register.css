@@ -1,0 +1,86 @@
+.homepage-form {
+  margin-top: 150px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.name-form {
+  font-size: 28px;
+}
+
+.input-form-homepage {
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background-color: white !important;
+}
+
+.input-form {
+  margin: 15px 0 0 0;
+}
+
+.field-homepage {
+  padding: 15px 5px;
+  border: solid;
+  border-radius: 15px;
+  border: 1px solid rgb(216, 216, 216);
+  margin: 5px 0;
+  display: grid;
+  grid-template-columns: 85px auto;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: rgb(187, 187, 187);
+  margin: 10px 0 0 10px;
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  color: tomato;
+  text-decoration: underline;
+}
+
+.button-form-homepage {
+  margin: 15px 0 0 350px;
+  background-color: #2980b9;
+  text-align: center;
+  padding: 5px;
+  font-size: 18px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.button-form-homepage:hover {
+  background-color: #246997;
+}
+
+.field-name {
+  display: grid;
+  grid-template-columns: 85px 135px;
+  border-radius: 15px;
+  border: 1px solid rgb(216, 216, 216);
+  padding: 15px 5px;
+}
+
+.fields-name {
+  display:  grid;
+  grid-template-columns: 245px 245px;
+  column-gap: 8px;
+} 
+
+.noti {
+  color: red;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.name-input {
+  font-size: 18px;
+}

@@ -11,7 +11,7 @@ const ButtonSignUp = (props) => {
 
   return (
     <div className={`buttons-header${style}`} onClick={redirectToRegister}>
-      Sign Up, It's Free
+      Sign Up
     </div>
   );
 }

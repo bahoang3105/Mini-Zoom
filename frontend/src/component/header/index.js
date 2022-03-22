@@ -1,7 +1,5 @@
-import '../../css/header.css';
-import AboutMe from './AboutMe';
-import ButtonHostAMeet from './ButtonHostAMeet';
-import ButtonJoinAMeet from './ButtonJoinAMeet';
+import './header.css';
+import ButtonHome from './ButtonHome';
 import ButtonSignIn from './ButtonSignIn';
 import ButtonSignUp from './ButtonSignUp';
 import Logo from './Logo';
@@ -13,7 +11,7 @@ const Header = (props) => {
     <div className='header'>
       <Logo />
       <div className='header-selection'>
-        <AboutMe selectedForm={props.selectedForm} />
+        <ButtonHome selectedForm={props.selectedForm} />
         <ButtonSignIn selectedForm={props.selectedForm} />
         <ButtonSignUp selectedForm={props.selectedForm} />
       </div>
@@ -24,9 +22,6 @@ const Header = (props) => {
     <div className='header'>
       <Logo />
       <div className='header-selection'>
-        <AboutMe selectedForm={props.selectedForm} />
-        <ButtonHostAMeet />
-        <ButtonJoinAMeet />
       </div>
     </div>
   );

@@ -61,7 +61,6 @@ const SignUpForm = (props) => {
               className='input-form-homepage' 
               value={lastname} 
               onChange={e => setLastname(e.target.value)} 
-              placeholder='Lastname' 
             />
           </div>
           <div className='field-name'>
@@ -72,8 +71,7 @@ const SignUpForm = (props) => {
               type='text' 
               className='input-form-homepage' 
               value={firstname} 
-              onChange={e => setFirstname(e.target.value)} 
-              placeholder='Firstname' 
+              onChange={e => setFirstname(e.target.value)}
             />
           </div>
         </div>
@@ -85,8 +83,7 @@ const SignUpForm = (props) => {
             type='text'
             className='input-form-homepage' 
             value={username} 
-            onChange={e => setUsername(e.target.value)} 
-            placeholder='Username' 
+            onChange={e => setUsername(e.target.value)}
           />
         </div>
         <div className='field-homepage'>
@@ -97,8 +94,7 @@ const SignUpForm = (props) => {
             type='password' 
             value={password} 
             onChange={e => setPassword(e.target.value)} 
-            className='input-form-homepage' 
-            placeholder='Password' 
+            className='input-form-homepage'
           />
         </div>
         <div className='field-homepage'>
@@ -109,8 +105,7 @@ const SignUpForm = (props) => {
             type='password' 
             value={repeatPassword} 
             onChange={e => setRepeatPassword(e.target.value)} 
-            className='input-form-homepage' 
-            placeholder='Repeat Password' 
+            className='input-form-homepage'
           />
         </div>
       </div>
